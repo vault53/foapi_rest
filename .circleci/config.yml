@@ -12,3 +12,9 @@ jobs:
     steps:
       - checkout
       - run: make build_docker
+workflows:
+  version: 2
+  main:
+    jobs:
+      - test
+      - build
