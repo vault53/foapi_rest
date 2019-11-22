@@ -5,16 +5,18 @@ jobs:
       - image: python:3
     steps:
       - checkout
+      - run: pip3 install -r requirements.txt
       - run: make tests
   build:
     docker:
       - image: python:3
     steps:
       - checkout
+      - run: pip3 install -r requirements.txt
       - run: make build_docker
 workflows:
   version: 2
-  main:
+  build_test_deploy:
     jobs:
       - test
       - build
