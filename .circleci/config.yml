@@ -14,9 +14,21 @@ jobs:
       - checkout
       - run: pip3 install -r requirements.txt
       - run: make build_docker
+  push:
+    docker:
+      - image: python:3
+    steps:
+      - checkout
+      - run: pip3 install -r requirements.txt
+      - run: make push_docker
 workflows:
   version: 2
   build_test_deploy:
     jobs:
       - test
-      - build
+      - build:
+          requires:
+            - test
+      - push:
+          requires:
+            - build
