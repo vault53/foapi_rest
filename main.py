@@ -20,7 +20,7 @@ consumer = KafkaConsumer(
     'rest_api_response',
     bootstrap_servers=['kafka:9092'],
     auto_offset_reset='earliest',
-    enble_auto_commit=True,
+    enable_auto_commit=True,
     group_id='my_group',
     value_deserializer=lambda x:
     json.loads(x).decode('utf-8')
@@ -63,3 +63,4 @@ api.add_resource(Consumables, '/consumables')
 
 if __name__ == '__main__':
     app.run(debug=True)
+
